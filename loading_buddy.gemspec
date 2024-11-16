@@ -10,6 +10,8 @@ Gem::Specification.new do |spec|
 
     spec.description = "Provides progress bars and spinners for command-line applications"
 
+    spec.license = "MIT"
+
     spec.required_ruby_version = ">= 2.6.0"
     spec.files         = Dir['lib/**/*', 'README.md', 'LICENSE.txt']
     spec.require_paths = ["lib"]
