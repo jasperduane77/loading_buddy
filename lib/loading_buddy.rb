@@ -1,5 +1,6 @@
 require "loading_buddy/version"
 require "loading_buddy/configuration"
+require "loading_buddy/progress_bar"
 
 module LoadingBuddy
   class << self
