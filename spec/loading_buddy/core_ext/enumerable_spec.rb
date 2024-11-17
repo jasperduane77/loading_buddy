@@ -7,7 +7,7 @@ RSpec.describe LoadingBuddy::CoreExt::Enumerable do
     end
 
     it 'should call puts multiple times' do
-      # expect_any_instance_of(LoadingBuddy::ProgressBar).to receive(:start).once
+      expect_any_instance_of(LoadingBuddy::ProgressBar).to receive(:start)
       # TODO: Fix this spec by adding environment variables
       [1,2,3,4].each do
       end
