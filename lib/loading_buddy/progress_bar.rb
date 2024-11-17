@@ -20,8 +20,6 @@ module LoadingBuddy
       puts # Add a new line once its finished
     end
 
-    private
-
     def render
       percentage = (@current.to_f / @total * 100).round(1)
       bar_width = 30
@@ -33,7 +31,11 @@ module LoadingBuddy
       bar += " " * (empty - 1) if empty.positive?
 
       title_display = @title ? "#{@title}: " : ""
-      print "\r#{title_display}[#{bar}] #{percentage}%"
+      print string_to_print(title_display:, bar:, percentage:)
+    end
+
+    def string_to_print(title_display:, bar:, percentage:)
+      "\r#{title_display}[#{bar}] #{percentage}%"
     end
   end
 end
