@@ -3,7 +3,7 @@ require "loading_buddy"
 LoadingBuddy.install
 
 puts "Test init:"
-[1,2,3,4,5,6].each do
+[1,2,3,4,5,6].each_with_progress do
 end
 
 puts "--- --- ---"
@@ -13,5 +13,5 @@ puts "Test with Title"
 LoadingBuddy.configure do |config|
   config.title = "Progress Test!"
 end
-[1,2,3,4,5,6].each do
+[1,2,3,4,5,6].each_with_progress do
 end

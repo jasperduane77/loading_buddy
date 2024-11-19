@@ -1,6 +1,13 @@
 require "loading_buddy"
 
 RSpec.describe LoadingBuddy::Configuration do
+  after(:each) do
+    LoadingBuddy.configure do |config|
+      config.enabled = true
+      config.min_size = 5
+    end
+  end
+
   describe 'default configuration' do
     it 'has default enabled value' do
       config = LoadingBuddy::Configuration.new
