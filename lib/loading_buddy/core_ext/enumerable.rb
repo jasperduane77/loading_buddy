@@ -1,6 +1,7 @@
 module LoadingBuddy
   module CoreExt
     module Enumerable
+      # TODO: do for each_with_index and other looping methods
       def each_with_progress(&block)
         return each_without_progress(&block) unless LoadingBuddy.configuration.enabled || !respond_to?(:size)
 
