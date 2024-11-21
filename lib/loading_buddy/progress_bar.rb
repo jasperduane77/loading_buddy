@@ -4,9 +4,15 @@ module LoadingBuddy
       @total = total
       @current = 0
       @title = options[:title]
+      # Move down one line and store position
+      print "\033[s"
+      # Move back up
+      print "\033[A"
     end
 
     def start
+      # Move to stored position and render
+      print "\033[u\033[K"
       render
     end
 
@@ -16,26 +22,28 @@ module LoadingBuddy
     end
 
     def finish
-      render
-      puts # Add a new line once its finished
+      print "\n"
     end
+
+    private
 
     def render
       percentage = (@current.to_f / @total * 100).round(1)
       bar_width = 30
       filled = (bar_width * (percentage / 100.0)).round
       empty = bar_width - filled
-      
-      bar = "=" * filled
-      bar += ">" if filled < bar_width
-      bar += " " * (empty - 1) if empty.positive?
+
+      bar = if filled == bar_width
+        "=" * filled
+      else  
+        "=" * filled + ">" + " " * empty
+      end
 
       title_display = @title ? "#{@title}: " : ""
-      print string_to_print(title_display:, bar:, percentage:)
-    end
-
-    def string_to_print(title_display:, bar:, percentage:)
-      "\r#{title_display}[#{bar}] #{percentage}%"
+      # Move to stored position, clear line and print progress
+      print "\033[u\033[K#{title_display}[#{bar}] #{percentage}%"
+      # Move cursor back to bottom
+      print "\033[B"
     end
   end
 end

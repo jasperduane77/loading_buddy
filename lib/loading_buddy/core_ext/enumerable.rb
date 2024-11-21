@@ -29,8 +29,8 @@ module LoadingBuddy
           progress.start
 
           benchmark = Benchmark.measure do
-            send("#{method}_without_progress") do |item|
-              block.call(item)
+            send("#{method}_without_progress") do |*args|
+              block.call(*args)
               progress.increment
             end
           end.real
