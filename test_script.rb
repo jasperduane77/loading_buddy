@@ -3,6 +3,7 @@ require 'loading_buddy'
 LoadingBuddy.configure do |config|
   config.enabled = true
   config.min_size = 10
+  config.benchmark = true
 end
 
 puts "LoadingBuddy Configuration:"
